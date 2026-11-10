@@ -16,7 +16,7 @@
 
 | 配置 | 默认 | 说明 |
 | --- | --- | --- |
-| `outputDir` | `<用户目录>/课程知识地图` | 与 coursemap 的 outputDir 保持一致（本项目为 `D:/course-notes/知识地图`） |
+| `outputDir` | `<用户目录>/课程知识地图` | 与 coursemap 的 outputDir 保持一致（例如 `D:/notes/知识地图`） |
 | `presentLimit` | 4 | 单次投递返回的文档数上限（present 上限 4） |
 
 ## 投递状态
