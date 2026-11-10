@@ -1,0 +1,53 @@
+' Course Assistant launcher.
+' Starts the local server without a console window (if it is not already running),
+' then opens the control panel in the default browser.
+Option Explicit
+Dim fso, shell, appDir, nodeExe, base, i
+
+Set fso = CreateObject("Scripting.FileSystemObject")
+Set shell = CreateObject("WScript.Shell")
+appDir = fso.GetParentFolderName(WScript.ScriptFullName)
+
+Function FindRunning()
+  Dim j, http, url
+  FindRunning = ""
+  For j = 3456 To 3459
+    url = "http://127.0.0.1:" & j & "/api/status"
+    On Error Resume Next
+    Set http = CreateObject("MSXML2.ServerXMLHTTP.6.0")
+    http.setTimeouts 300, 300, 500, 800
+    http.open "GET", url, False
+    http.send
+    If Err.Number = 0 Then
+      If http.status = 200 Then
+        FindRunning = "http://127.0.0.1:" & j & "/"
+      End If
+    End If
+    Err.Clear
+    On Error GoTo 0
+    If FindRunning <> "" Then Exit Function
+  Next
+End Function
+
+base = FindRunning()
+If base = "" Then
+  nodeExe = "C:\Program Files\nodejs\node.exe"
+  If Not fso.FileExists(nodeExe) Then
+    nodeExe = shell.ExpandEnvironmentStrings("%USERPROFILE%") & "\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe"
+  End If
+  If Not fso.FileExists(nodeExe) Then nodeExe = "node"
+  shell.CurrentDirectory = appDir
+  shell.Run """" & nodeExe & """ """ & appDir & "\server.mjs""", 0, False
+  For i = 1 To 60
+    WScript.Sleep 500
+    base = FindRunning()
+    If base <> "" Then Exit For
+  Next
+End If
+
+If base = "" Then
+  MsgBox "Course Assistant failed to start: the local server did not respond within 30s." & vbCrLf & vbCrLf & "Run it manually to see the error:" & vbCrLf & "  node """ & appDir & "\server.mjs""", 16, "Course Assistant"
+  WScript.Quit 1
+End If
+
+shell.Run base, 1, False

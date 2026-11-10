@@ -1,0 +1,18 @@
+{
+  "name": "dsh-course-notes",
+  "version": "1.0.0",
+  "description": "课程笔记投递插件：把 dsh-video-coursemap 生成的知识地图/学习手册 Word 文档收件箱化，并投递到当前会话对话框中展示",
+  "type": "module",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ]
+}

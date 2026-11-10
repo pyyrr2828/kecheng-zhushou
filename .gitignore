@@ -1,0 +1,26 @@
+# ── 真实产出与个人数据（观看记录 / 笔记 / 日志 / 进程锁）──
+知识地图/
+.state/
+
+# ── 本地配置（含真实 API Key）与运行时状态 ──
+app/config.json
+app/runtime.json
+config.local.json
+
+# ── 临时脚本、抓包与截图试验 ──
+_probe/
+
+# ── 依赖与缓存 ──
+node_modules/
+.pnpm-store/
+*.log
+*.tmp
+tmp/
+.cache/
+
+# ── 系统与编辑器垃圾 ──
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+*.swp

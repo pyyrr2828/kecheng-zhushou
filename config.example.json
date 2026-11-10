@@ -1,0 +1,15 @@
+{
+  "port": 3456,
+  "pollIntervalMs": 10000,
+  "stablePolls": 2,
+  "titleMinLen": 4,
+  "enabled": true,
+  "fetchContent": true,
+  "maxTokens": 4096,
+  "outputDir": "",
+  "llm": {
+    "baseUrl": "https://api.deepseek.com",
+    "model": "deepseek-chat",
+    "apiKey": ""
+  }
+}

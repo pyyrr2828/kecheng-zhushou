@@ -1,0 +1,5 @@
+# dsh-course-notes bundle patch：把 host 插件行插入 profile 的插件清单。
+# 用 dsh plugin --profile desktop add <path> 安装后自动应用，不要再在 profile patch 里 insert 同一 id。
+- insert:
+    - id: dsh-course-notes
+      name: 'dsh-course-notes'
