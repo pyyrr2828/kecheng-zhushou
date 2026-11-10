@@ -5,6 +5,7 @@
   "type": "module",
   "main": "lib/index.js",
   "license": "MIT",
+  "author": "pyyrr",
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
