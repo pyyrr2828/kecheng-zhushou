@@ -61,6 +61,7 @@
 | --- | --- | --- |
 | `done … docx=ok` | 生成成功 | — |
 | `done … docx=failed` | Markdown 写成了但 Word 没转出来 | 多是 Python / python-docx 不可用；md 仍在 `.state/manuals/`，修好后点「重建 Word」 |
+| `error code=XXX msg=…` | 某个环节抛错，`XXX` 是错误码 | `DOCX_FAILED`（转 Word 失败）、`NO_LLM` / `LLM_AUTH` / `LLM_HTTP` / `LLM_TIMEOUT`（模型）、`BILI_FAILED`（抓 B 站）、`CLASSIFY_FAILED`（分类结果无法解析）、`FG_READ_FAILED`（读不到前台窗口） |
 | 顶部黄色提示、没有新笔记 | 没配模型 Key | 设置里填 Key，先点「测试连接」 |
 
 ## 4. 按现象查
