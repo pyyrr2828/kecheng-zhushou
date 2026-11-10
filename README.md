@@ -145,6 +145,8 @@ dsh plugin --profile <profile> add <repo>/plugins/dsh-course-notes
 
 ## 4. 使用方法
 
+> 只想知道每天怎么用、出问题怎么查？看一页速查：[USAGE.md](USAGE.md)。
+
 ### 日常：三步
 
 1. 用浏览器（或 B 站客户端）打开课程视频
