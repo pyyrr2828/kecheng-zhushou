@@ -12,6 +12,14 @@
 import re
 import sys
 
+# stdout 可能被 Node 以管道方式接管，此时 Windows 会按本地代码页（cp936/cp1252）编码，
+# 打印含中文的路径会抛 UnicodeEncodeError 而被误判为「转换失败」。统一改成 UTF-8。
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.oxml.ns import qn
