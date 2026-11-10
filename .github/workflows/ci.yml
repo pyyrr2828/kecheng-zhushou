@@ -1,0 +1,24 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install python-docx
+      - name: syntax check
+        run: |
+          node --check app/server.mjs
+          node --check plugins/dsh-video-coursemap/lib/index.js
+      - name: unit tests
+        run: node tests/run.mjs
