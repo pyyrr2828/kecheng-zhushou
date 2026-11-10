@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>课程助手 · B 站课程实时笔记</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header>
+  <div class="brand"><span class="dot" id="dot"></span>课程助手</div>
+  <span class="countdown" id="countdown">下次轮询 <b>--:--</b></span>
+  <label style="display:flex;align-items:center;gap:6px">
+    间隔
+    <select id="interval">
+      <option value="3000">3 秒</option>
+      <option value="5000">5 秒</option>
+      <option value="10000">10 秒</option>
+      <option value="15000">15 秒</option>
+      <option value="30000">30 秒</option>
+      <option value="60000">60 秒</option>
+      <option value="120000">2 分钟</option>
+    </select>
+  </label>
+  <button id="saveInterval" class="primary">保存</button>
+  <button id="scan">立即扫描</button>
+  <div class="spacer"></div>
+  <label class="switch" title="启动 / 停止轮询">
+    <input type="checkbox" id="toggle" checked />
+    <span class="track"></span>
+    <span id="toggleText">运行中</span>
+  </label>
+  <button id="openSettings" title="设置">⚙ 设置</button>
+</header>
+
+<div class="banner" id="banner"></div>
+
+<main>
+  <section class="panel">
+    <div class="panel-head">
+      实时轮询
+      <div class="tools">
+        <button id="onlyIssues" title="只看异常">只看异常</button>
+        <button id="clearFeed">清屏</button>
+      </div>
+    </div>
+    <div id="feed"><div class="empty">等待第一次轮询…<br />把 B 站课程视频放在前台即可</div></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head">
+      实时总结
+      <div class="tools"><button id="openIndex">打开课程总览</button></div>
+    </div>
+    <div id="summary"><div class="empty">识别到课程后，这里会实时显示分类、抓取与生成过程</div></div>
+  </section>
+</main>
+
+<footer>
+  <div class="chips" id="chips"><span class="empty" style="padding:0;color:var(--muted)">笔记库：暂无学科</span></div>
+</footer>
+
+<div id="drawer">
+  <div class="card">
+    <h2>设置</h2>
+    <div class="field"><label>接口地址</label><input id="baseUrl" placeholder="https://api.deepseek.com" /></div>
+    <div class="hint">OpenAI 兼容端点；本地 Ollama 可填 http://127.0.0.1:11434/v1</div>
+    <div class="field"><label>模型</label><input id="model" placeholder="deepseek-chat" /></div>
+    <div class="field"><label>API Key</label><input id="apiKey" type="password" placeholder="sk-..." /></div>
+    <div class="hint" id="keyHint">留空则只检测不生成笔记</div>
+    <div class="field"><label>输出目录</label><input id="outDir" disabled /></div>
+    <div class="field"><label>稳定次数</label><input id="stablePolls" type="number" min="1" max="10" /></div>
+    <div class="hint">连续 N 次看到同一标题才处理，默认 2</div>
+    <div class="card-actions">
+      <button id="resetSeen" class="danger">清空去重表</button>
+      <button id="testLlm">测试连接</button>
+      <button id="closeSettings">关闭</button>
+      <button id="saveSettings" class="primary">保存</button>
+    </div>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
