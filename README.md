@@ -351,7 +351,10 @@ node tests\run.mjs               # 29 项自测（假模型 + 临时目录，不
 
 ## 10. 许可
 
-[MIT](LICENSE)
+本项目以 [MIT](LICENSE) 许可发布 —— 可商用、可修改、可再分发，保留版权声明即可。
+
+- 第三方组件与本项目的修改说明：[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)
+- `plugins/dsh-video-coursemap` 来自上游 MIT 项目，其原始许可见 [plugins/dsh-video-coursemap/LICENSE](plugins/dsh-video-coursemap/LICENSE)
 
 ## Roadmap
 
